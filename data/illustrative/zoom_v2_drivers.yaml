@@ -1,0 +1,13 @@
+# Zoom Communications (ZM) — V2 (revised), illustrative.
+# Exactly three drivers change vs V1: revenue_growth, opex_pct, capex_pct.
+# All others held constant. See assumptions.md for the economic narrative.
+schema_version: "1.0.0"
+label: "V2 (Revised)"
+drivers:
+  revenue_prior: 4527.0
+  revenue_growth: 0.055    # +5.5% (+240bps) — AI/enterprise re-acceleration
+  cogs_pct: 0.240
+  opex_pct: 0.495           # -250bps — operating leverage
+  tax_rate: 0.180
+  nwc_pct: 0.050
+  capex_pct: 0.045           # +150bps — AI infrastructure build-out

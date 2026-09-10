@@ -1,0 +1,7 @@
+driver,defined,threshold,search_low,search_high,n_sign_changes,reason
+revenue_growth,True,-0.109867751780264,-0.95,3.0,1,monotone in search range; root located via Brent's method
+cogs_pct,True,0.7466755587599135,0.0,1.5,1,monotone in search range; root located via Brent's method
+opex_pct,True,0.23467555875928603,0.0,1.5,1,monotone in search range; root located via Brent's method
+tax_rate,True,0.39854452054794504,0.0,1.5,1,monotone in search range; root located via Brent's method
+nwc_pct,True,0.20068363636363704,0.0,1.5,1,monotone in search range; root located via Brent's method
+capex_pct,True,0.02507342465753424,0.0,1.5,1,monotone in search range; root located via Brent's method

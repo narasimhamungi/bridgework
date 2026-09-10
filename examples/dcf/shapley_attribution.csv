@@ -1,0 +1,4 @@
+driver,shapley_contribution,pct_of_variance,ci_low,ci_high,method,n_samples
+growth_explicit,-10.98487307497853,24.35354568531208,,,exact,
+wacc,-21.40508201172964,47.45522675704913,,,exact,
+terminal_growth,-12.715891991664641,28.191227557638772,,,exact,

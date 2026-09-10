@@ -1,0 +1,7 @@
+driver,label,v1,v2,absolute_change,pct_change,changed
+fcf_base,Base-year free cash flow ($M),1000.0,1000.0,0.0,0.0,False
+growth_explicit,"FCF growth, explicit period (%)",0.08,0.055,-0.025,-31.25,True
+wacc,Weighted average cost of capital (%),0.075,0.085,0.010000000000000009,13.333333333333346,True
+terminal_growth,Terminal growth rate (%),0.035,0.028,-0.007000000000000003,-20.000000000000007,True
+net_debt,Net debt ($M),4000.0,4000.0,0.0,0.0,False
+shares_outstanding,Shares outstanding (M),250.0,250.0,0.0,0.0,False

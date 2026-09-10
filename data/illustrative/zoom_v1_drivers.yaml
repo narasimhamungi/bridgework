@@ -1,0 +1,13 @@
+# Zoom Communications (ZM) — V1 (baseline), illustrative.
+# See assumptions.md for full source documentation and the corrected
+# FY2025 citation (Blueprint Decision 1).
+schema_version: "1.0.0"
+label: "V1 (Baseline)"
+drivers:
+  revenue_prior: 4527.0    # $M, FY2024 revenue anchor (10-K)
+  revenue_growth: 0.031    # +3.1%, illustrative FY24->FY25 growth
+  cogs_pct: 0.240           # 24% COGS, ~76% gross margin anchor
+  opex_pct: 0.520           # illustrative — NOT derived from actual FY25 GAAP margin (see assumptions.md)
+  tax_rate: 0.180           # illustrative effective rate on EBIT
+  nwc_pct: 0.050             # illustrative NWC intensity
+  capex_pct: 0.030           # ~$137M capex on ~$4.66B revenue

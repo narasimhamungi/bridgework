@@ -1,0 +1,26 @@
+# Caterpillar Inc. — company adapter.
+#
+# Maps Caterpillar's own line-item vocabulary onto Bridgework's seven
+# canonical driver roles. This file is the ONLY thing required to add a
+# company: no .py file changes (Blueprint §M mapping-only rule).
+#
+# Note the vocabulary difference from Zoom, which is the point of this
+# test: CAT reports "sales and revenues" (not "revenue"), "cost of sales"
+# (not "COGS"), and SG&A + R&D as separate lines that roll into one opex
+# role here.
+
+schema_version: "1.0.0"
+company: "Caterpillar Inc."
+ticker: CAT
+units: USD_millions
+fiscal_year_end: "December 31"
+reporting_standard: US-GAAP
+
+role_map:
+  revenue_prior: prior_year_sales_and_revenues
+  revenue_growth: sales_and_revenues_growth
+  cogs_pct: cost_of_sales_pct
+  opex_pct: sga_and_rd_pct
+  tax_rate: effective_tax_rate
+  nwc_pct: working_capital_intensity
+  capex_pct: capex_pct_of_sales

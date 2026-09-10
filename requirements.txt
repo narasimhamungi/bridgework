@@ -1,0 +1,11 @@
+# Runtime dependencies. Upper bounds are deliberate: the reproducibility
+# claim (byte-identical outputs) is only meaningful against a known
+# dependency set. Dev/test tooling lives in pyproject's [dev] extra.
+pandas>=2.0,<3.0
+numpy>=1.24,<3.0
+matplotlib>=3.7,<4.0
+openpyxl>=3.1,<4.0
+pyyaml>=6.0,<7.0
+tabulate>=0.9,<1.0
+SALib>=1.4,<2.0
+scipy>=1.10,<2.0

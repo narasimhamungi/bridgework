@@ -1,0 +1,19 @@
+ordering,driver,incremental_impact
+capex_pct -> opex_pct -> revenue_growth,capex_pct,-70.01005499999997
+capex_pct -> opex_pct -> revenue_growth,opex_pct,95.68040850000011
+capex_pct -> opex_pct -> revenue_growth,revenue_growth,13.287650400000189
+capex_pct -> revenue_growth -> opex_pct,capex_pct,-70.01005499999997
+capex_pct -> revenue_growth -> opex_pct,opex_pct,97.9076925000004
+capex_pct -> revenue_growth -> opex_pct,revenue_growth,11.060366399999907
+opex_pct -> capex_pct -> revenue_growth,capex_pct,-70.01005499999997
+opex_pct -> capex_pct -> revenue_growth,opex_pct,95.68040850000011
+opex_pct -> capex_pct -> revenue_growth,revenue_growth,13.287650400000189
+opex_pct -> revenue_growth -> capex_pct,capex_pct,-71.63977499999999
+opex_pct -> revenue_growth -> capex_pct,opex_pct,95.68040850000011
+opex_pct -> revenue_growth -> capex_pct,revenue_growth,14.917370400000209
+revenue_growth -> capex_pct -> opex_pct,capex_pct,-71.63977499999999
+revenue_growth -> capex_pct -> opex_pct,opex_pct,97.9076925000004
+revenue_growth -> capex_pct -> opex_pct,revenue_growth,12.690086399999927
+revenue_growth -> opex_pct -> capex_pct,capex_pct,-71.63977499999999
+revenue_growth -> opex_pct -> capex_pct,opex_pct,97.9076925000004
+revenue_growth -> opex_pct -> capex_pct,revenue_growth,12.690086399999927

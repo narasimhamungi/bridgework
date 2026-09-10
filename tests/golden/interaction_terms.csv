@@ -1,0 +1,5 @@
+subset,order,mobius_interaction
+opex_pct x capex_pct,2,0.0
+revenue_growth x capex_pct,2,-1.6297200000000203
+revenue_growth x opex_pct,2,2.2272840000002816
+revenue_growth x opex_pct x capex_pct,3,0.0

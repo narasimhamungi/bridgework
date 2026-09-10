@@ -1,0 +1,5 @@
+subset,order,mobius_interaction
+growth_explicit x terminal_growth,2,1.810785276363589
+growth_explicit x wacc,2,2.8103161478651373
+wacc x terminal_growth,2,5.970170099032657
+growth_explicit x wacc x terminal_growth,3,-0.6597335300329519

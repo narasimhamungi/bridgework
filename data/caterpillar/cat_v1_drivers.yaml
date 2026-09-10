@@ -1,0 +1,15 @@
+# Caterpillar Inc. — V1: FY2024 as reported.
+# Public anchors verified against CAT's Q4/FY2024 earnings release
+# (Jan 30, 2025) and FY2024 10-K. See assumptions.md for which values are
+# reported figures and which are illustrative.
+schema_version: "1.0.0"
+label: "FY2024 Actual"
+mapping: mapping.yaml
+drivers:
+  prior_year_sales_and_revenues: 67060.0   # FY2023 sales & revenues, $M (reported)
+  sales_and_revenues_growth: -0.0336        # FY24 $64,809M vs FY23 $67,060M = -3.4% (reported)
+  cost_of_sales_pct: 0.620                  # cost of sales ~$40.2B / $64.8B (reported)
+  sga_and_rd_pct: 0.178                     # balancing to the reported 20.2% operating margin
+  effective_tax_rate: 0.225                 # illustrative — see assumptions.md
+  working_capital_intensity: 0.080          # illustrative — see assumptions.md
+  capex_pct_of_sales: 0.050                 # illustrative — see assumptions.md

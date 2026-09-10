@@ -1,0 +1,14 @@
+# Northwind Grocery (synthetic) — V1 baseline.
+# Thin-margin grocery shape: ~26% gross margin, ~23% store opex,
+# NEGATIVE working capital (suppliers financed, inventory turns fast).
+schema_version: "1.0.0"
+label: "FY Baseline"
+mapping: mapping.yaml
+drivers:
+  prior_year_net_sales: 18400.0
+  comparable_sales_growth: 0.022
+  cost_of_merchandise_pct: 0.740
+  store_operating_expense_pct: 0.228
+  effective_tax_rate: 0.240
+  inventory_and_payables_intensity: -0.035   # negative NWC — a real retail characteristic
+  new_store_capex_pct: 0.020

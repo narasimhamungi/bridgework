@@ -1,0 +1,16 @@
+# Caterpillar Inc. — V2: revised planning scenario.
+# Illustrative forward case, NOT a forecast. Three drivers move, chosen to
+# push in opposing directions so the attribution question is non-trivial:
+# volume recovery lifts the top line, tariff/input cost pressure raises
+# cost of sales, and a capex step-up for capacity subtracts from FCF.
+schema_version: "1.0.0"
+label: "Revised Scenario"
+mapping: mapping.yaml
+drivers:
+  prior_year_sales_and_revenues: 67060.0
+  sales_and_revenues_growth: 0.015          # -3.4% -> +1.5%: dealer restocking / volume recovery
+  cost_of_sales_pct: 0.638                  # +180bps: input cost and tariff pressure
+  sga_and_rd_pct: 0.178
+  effective_tax_rate: 0.225
+  working_capital_intensity: 0.080
+  capex_pct_of_sales: 0.062                 # +120bps: capacity and autonomy investment

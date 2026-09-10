@@ -1,0 +1,8 @@
+driver,label,v1,v2,absolute_change,pct_change,changed
+revenue_prior,"Revenue (prior year, $M)",4527.0,4527.0,0.0,0.0,False
+revenue_growth,Revenue growth (%),0.031,0.055,0.024,77.41935483870968,True
+cogs_pct,COGS (% of revenue),0.24,0.24,0.0,0.0,False
+opex_pct,Opex (% of revenue),0.52,0.495,-0.025000000000000022,-4.807692307692312,True
+tax_rate,Effective tax rate (%),0.18,0.18,0.0,0.0,False
+nwc_pct,NWC intensity (% of revenue),0.05,0.05,0.0,0.0,False
+capex_pct,CapEx (% of revenue),0.03,0.045,0.015,50.0,True

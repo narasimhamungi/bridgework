@@ -1,0 +1,60 @@
+# Bridgework canonical schema — v1.0.0
+#
+# Defines the fixed set of driver "roles" that src/bridgework/model.py
+# computes over. A company/industry adapter's job is to map its own named
+# line items onto these seven roles; the engine never reads a company-specific
+# name. This is what makes the Phase-4 "mapping-only" cross-company rule
+# enforceable (Blueprint §D, §M): adding a new company requires a new
+# mapping file only, never a change to model.py.
+
+schema_version: "1.0.0"
+primary_output: free_cash_flow
+currency_unit: USD_millions
+
+line_items:
+  - role: revenue_prior
+    type: revenue_driver
+    unit: currency
+    description: Prior-period revenue anchor.
+
+  - role: revenue_growth
+    type: revenue_driver
+    unit: decimal_fraction
+    description: Current-period revenue growth rate.
+
+  - role: cogs_pct
+    type: margin_driver
+    unit: decimal_fraction
+    description: Cost of goods sold as a percentage of revenue.
+
+  - role: opex_pct
+    type: opex_driver
+    unit: decimal_fraction
+    description: Operating expense (R&D + S&M + G&A) as a percentage of revenue.
+
+  - role: tax_rate
+    type: tax_driver
+    unit: decimal_fraction
+    description: Effective tax rate applied to EBIT, floored at EBIT >= 0.
+
+  - role: nwc_pct
+    type: working_capital_driver
+    unit: decimal_fraction
+    description: Net working capital intensity as a percentage of revenue.
+
+  - role: capex_pct
+    type: capex_driver
+    unit: decimal_fraction
+    description: Capital expenditure as a percentage of revenue.
+
+calculation_graph:
+  # Documents the dependency order model.py's compute_fcf must respect.
+  - revenue: "revenue_prior * (1 + revenue_growth)"
+  - gross_profit: "revenue * (1 - cogs_pct)"
+  - opex: "revenue * opex_pct"
+  - ebit: "gross_profit - opex"
+  - taxes: "max(ebit, 0) * tax_rate"
+  - nopat: "ebit - taxes"
+  - delta_nwc: "revenue * nwc_pct - revenue_prior * nwc_pct"
+  - capex: "revenue * capex_pct"
+  - free_cash_flow: "nopat - delta_nwc - capex"

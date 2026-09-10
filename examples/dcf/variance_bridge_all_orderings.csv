@@ -1,0 +1,19 @@
+ordering,driver,incremental_impact
+growth_explicit -> terminal_growth -> wacc,growth_explicit,-13.075512610415245
+growth_explicit -> terminal_growth -> wacc,terminal_growth,-14.575673226321527
+growth_explicit -> terminal_growth -> wacc,wacc,-17.454661241636046
+growth_explicit -> wacc -> terminal_growth,growth_explicit,-13.075512610415245
+growth_explicit -> wacc -> terminal_growth,terminal_growth,-9.265236657321822
+growth_explicit -> wacc -> terminal_growth,wacc,-22.76509781063575
+terminal_growth -> growth_explicit -> wacc,growth_explicit,-11.264727334051656
+terminal_growth -> growth_explicit -> wacc,terminal_growth,-16.386458502685116
+terminal_growth -> growth_explicit -> wacc,wacc,-17.454661241636046
+terminal_growth -> wacc -> growth_explicit,growth_explicit,-9.11414471621947
+terminal_growth -> wacc -> growth_explicit,terminal_growth,-16.386458502685116
+terminal_growth -> wacc -> growth_explicit,wacc,-19.60524385946823
+wacc -> growth_explicit -> terminal_growth,growth_explicit,-10.265196462550108
+wacc -> growth_explicit -> terminal_growth,terminal_growth,-9.265236657321822
+wacc -> growth_explicit -> terminal_growth,wacc,-25.57541395850089
+wacc -> terminal_growth -> growth_explicit,growth_explicit,-9.11414471621947
+wacc -> terminal_growth -> growth_explicit,terminal_growth,-10.416288403652459
+wacc -> terminal_growth -> growth_explicit,wacc,-25.57541395850089

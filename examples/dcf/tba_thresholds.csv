@@ -1,0 +1,5 @@
+driver,defined,threshold,search_low,search_high,n_sign_changes,reason
+growth_explicit,True,-0.3270640201114155,-0.5,1.0,1,monotone in search range; root located via Brent's method
+wacc,True,0.33235982480659804,0.045,0.4,1,monotone in search range; root located via Brent's method
+terminal_growth,False,,-0.2,0.04,0,"threshold undefined — target never crossed within search range [-0.2, 0.04]: 0 sign changes across 11-point grid scan. The function may be perfectly monotone here; the crossing simply lies outside this range. Widen search_range to locate it."
+net_debt,True,31552.569522706955,0.0,500000.0,1,monotone in search range; root located via Brent's method

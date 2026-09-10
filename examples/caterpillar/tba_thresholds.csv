@@ -1,0 +1,7 @@
+driver,defined,threshold,search_low,search_high,n_sign_changes,reason
+revenue_growth,False,,-0.95,3.0,0,"threshold undefined — target never crossed within search range [-0.95, 3.0]: 0 sign changes across 11-point grid scan. The function may be perfectly monotone here; the crossing simply lies outside this range. Widen search_range to locate it."
+cogs_pct,True,0.761072847681938,0.0,1.5,1,monotone in search range; root located via Brent's method
+opex_pct,True,0.31907284768010663,0.0,1.5,1,monotone in search range; root located via Brent's method
+tax_rate,True,0.7662448364041702,0.0,1.5,1,monotone in search range; root located via Brent's method
+nwc_pct,False,,0.0,1.5,0,"threshold undefined — target never crossed within search range [0.0, 1.5]: 0 sign changes across 11-point grid scan. The function may be perfectly monotone here; the crossing simply lies outside this range. Widen search_range to locate it."
+capex_pct,True,0.15933145695364237,0.0,1.5,1,monotone in search range; root located via Brent's method

@@ -1,0 +1,4 @@
+driver,shapley_contribution,pct_of_variance,ci_low,ci_high,method,n_samples
+revenue_growth,44.24249970000164,-2.633826129030811,,,exact,
+cogs_pct,-926.7869709000015,55.17309728323627,,,exact,
+capex_pct,-797.2361039999995,47.460728845794534,,,exact,

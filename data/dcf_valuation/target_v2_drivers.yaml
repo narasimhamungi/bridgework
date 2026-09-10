@@ -1,0 +1,16 @@
+# Illustrative DCF — V2: this week's revised model.
+# Three assumptions move, all tightening the valuation: slower explicit
+# growth, a higher discount rate, and a more conservative perpetuity.
+# This is the everyday IB/equity-research situation — an MD asks "why did
+# our price target drop?" and the honest answer depends on how you walk
+# the drivers unless you attribute properly.
+schema_version: "1.0.0"
+model: dcf
+label: "V2 (This week's model)"
+drivers:
+  fcf_base: 1000.0
+  growth_explicit: 0.055      # 8.0% -> 5.5%: softer near-term outlook
+  wacc: 0.085                 # 7.5% -> 8.5%: higher risk-free / equity risk premium
+  terminal_growth: 0.028      # 3.5% -> 2.8%: more conservative perpetuity
+  net_debt: 4000.0
+  shares_outstanding: 250.0

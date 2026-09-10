@@ -1,0 +1,13 @@
+# Illustrative DCF — V1: the model as it stood last week.
+# Generic mid-cap target, NOT a real company. The point of this dataset is
+# the attribution problem, not the valuation itself.
+schema_version: "1.0.0"
+model: dcf
+label: "V1 (Last week's model)"
+drivers:
+  fcf_base: 1000.0            # base-year unlevered FCF, $M
+  growth_explicit: 0.080      # 8% FCF growth through the 5-year explicit period
+  wacc: 0.075                 # 7.5% weighted average cost of capital
+  terminal_growth: 0.035      # 3.5% perpetuity growth
+  net_debt: 4000.0            # $M
+  shares_outstanding: 250.0   # M shares

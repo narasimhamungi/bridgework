@@ -1,0 +1,29 @@
+# Northwind Grocery (synthetic) — company adapter.
+#
+# THE POINT OF THIS FILE: it was added AFTER the mapping mechanism landed,
+# with zero changes to any .py file. It is the actual proof of the
+# Blueprint §M mapping-only rule -- Caterpillar proved the schema spans
+# software -> heavy industry; this proves a THIRD company needs no code.
+#
+# Deliberately a thin-margin, high-turnover grocery retailer: the inverse
+# economic shape of both Zoom (high margin, low capital) and Caterpillar
+# (mid margin, capital heavy). Vocabulary differs again -- "net sales",
+# "cost of merchandise", "store operating expense".
+#
+# Synthetic company. Figures are invented and must not be cited.
+
+schema_version: "1.0.0"
+company: "Northwind Grocery Co. (synthetic)"
+ticker: SYNTHETIC
+units: USD_millions
+fiscal_year_end: "January 31"
+reporting_standard: US-GAAP
+
+role_map:
+  revenue_prior: prior_year_net_sales
+  revenue_growth: comparable_sales_growth
+  cogs_pct: cost_of_merchandise_pct
+  opex_pct: store_operating_expense_pct
+  tax_rate: effective_tax_rate
+  nwc_pct: inventory_and_payables_intensity
+  capex_pct: new_store_capex_pct

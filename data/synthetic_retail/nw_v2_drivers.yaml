@@ -1,0 +1,14 @@
+# Northwind Grocery (synthetic) — V2 revised.
+# Promotional intensity compresses merchandise margin while driving
+# volume; wage inflation lifts store opex. Opposing directions again.
+schema_version: "1.0.0"
+label: "Revised Scenario"
+mapping: mapping.yaml
+drivers:
+  prior_year_net_sales: 18400.0
+  comparable_sales_growth: 0.041
+  cost_of_merchandise_pct: 0.752
+  store_operating_expense_pct: 0.234
+  effective_tax_rate: 0.240
+  inventory_and_payables_intensity: -0.035
+  new_store_capex_pct: 0.020
