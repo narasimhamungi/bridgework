@@ -1,4 +1,4 @@
-# Bridgework — Phases 1–6
+# Bridgework 
 
 > **Phase 0** (proof of concept) asked one question: *does a Shapley-based
 > variance bridge produce enough analytical value to justify building
