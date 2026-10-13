@@ -173,7 +173,7 @@ def find_threshold(
     # Post-check: brentq brackets a SIGN CHANGE, which a discontinuity also
     # produces. On a step function it converges to the jump and reports a
     # confident root where none exists. Verify the residual actually
-    # vanishes before claiming a threshold (adversarial review finding).
+    # vanishes before claiming a threshold.
     residual = abs(g(root))
     scale = max(abs(target), 1.0)
     if residual > 1e-6 * scale:

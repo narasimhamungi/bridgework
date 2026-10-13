@@ -1,6 +1,6 @@
 # Bridgework — Master Research & Architecture Blueprint v1.0
 
-*Produced against the Bridgework Master Execution Prompt (masterplan.pdf, §0–14). Structured per §6 (A→O). Phase 0 numbers cited, not restated. Every non-trivial decision uses the §7 DECISION format and a LOCKED/PROVISIONAL/OPEN/REJECTED tag.*
+*Architecture specification, written before the Phase 1 build. Phase 0 numbers are cited, not restated. Every non-trivial decision uses a DECISION format and a LOCKED/PROVISIONAL/OPEN/REJECTED tag.*
 
 ---
 
@@ -32,18 +32,18 @@ Bridgework's differentiation is the pairing of (a) an axiomatically defensible, 
 
 ## B. Current State
 
-**Phase 0 (complete, independently re-verified this session — pytest 10/10 re-run, CSVs cross-checked, Excel formulas confirmed live not hardcoded).** Locked numbers per masterplan §4.2: V1 FCF $771.4949616M, V2 FCF $810.4529655M, total variance +$38.958M. Shapley: `revenue_growth` +$12.989M (33%), `opex_pct` +$96.794M (248%), `capex_pct` −$70.825M (−182%). Sequential ranges: `revenue_growth` $11.060–$14.917M, `opex_pct` $95.680–$97.908M, `capex_pct` −$71.640 to −$70.010M. All cited verbatim from Phase 0, not recomputed.
+**Phase 0 (complete, re-verified before Phase 1 — pytest 10/10 re-run, CSVs cross-checked, Excel formulas confirmed live not hardcoded).** Locked numbers: V1 FCF $771.4949616M, V2 FCF $810.4529655M, total variance +$38.958M. Shapley: `revenue_growth` +$12.989M (33%), `opex_pct` +$96.794M (248%), `capex_pct` −$70.825M (−182%). Sequential ranges: `revenue_growth` $11.060–$14.917M, `opex_pct` $95.680–$97.908M, `capex_pct` −$71.640 to −$70.010M. All cited verbatim from Phase 0, not recomputed.
 
-**§4.4 corrections — status of each, applied here:**
+**Phase 0 corrections — status of each, applied here:**
 - **A (terminology)** — Applied throughout this Blueprint: "interaction effect" is retired; "net non-additivity" (+$0.60M) and "L1 non-additivity" ($3.86M) used precisely (§D).
-- **B (two-way interaction table)** — Independently recomputed this session directly from Phase 0's `coalition_values`: I(rev,opex)=+$2.2273M, I(rev,capex)=−$1.6297M, I(opex,capex)=$0.00M, three-way=$0.00M. Net non-additivity = 2.2273 − 1.6297 + 0 = **+$0.5976M** ✓ matches the reported +$0.60M. L1 = |2.2273|+|1.6297|+|0| = **$3.857M** ✓ matches the reported ~$3.86M. Both figures are confirmed correct, not merely repeated.
-- **C (FY25 citation error)** — **Independently re-verified against Zoom's SEC filings this session.** The Phase 0 `assumptions.md` cites "FY2025 GAAP operating income $1,123.6M, Zoom 8-K Feb 24 2025" — this is wrong on two counts. First, Zoom's own Feb 24, 2025 release (covering FY ended Jan 31, 2025) reports **FY2025 GAAP operating margin of 17.4%**, not ~24%. Second, $1,123.6M is confirmed (via Zoom's Feb 25, 2026 release, which states income from operations was "$1,123.6 million, compared to GAAP income from operations of $813.3 million for fiscal year 2025") to be the **FY2026** figure. **Correct FY2025 GAAP operating income = $813.3M; correct FY2025 GAAP operating margin ≈ 17.4%.** This is a material correction: Phase 0's `opex_pct=52.0%` was calibrated to imply "~24% GAAP op margin," which itself was never Zoom's real FY25 figure.
-  - **DECISION 1** — OPTIONS: (a) silently leave Phase 0 numbers as-is and only fix the citation text; (b) re-derive V1 to target the correct 17.4% margin and treat this as a new golden dataset, breaking comparability with masterplan §4.2's LOCKED numbers.
-  - **RECOMMENDATION:** (a), with the correction fully disclosed. **WHY:** §4.2 explicitly locks the Phase-0 numbers as fixed regression-test fixtures ("must appear unchanged in the Blueprint"); Phase 0 was always labeled **illustrative**, not a reproduction of Zoom's actuals, so its internal consistency (a 7-driver toy model reconciling to itself) does not depend on the citation being correct. **TRADE-OFF:** the phrase "implies ~24% GAAP op margin" in the old `assumptions.md` is retired as misleading. **IMPLEMENTATION CONSEQUENCE:** `data/illustrative/assumptions.md` is rewritten (§L) to state the corrected FY25 figures ($813.3M, 17.4%) as the *real* public anchor, explicitly flag that `opex_pct=52.0%` is an **illustrative, not margin-matched**, input chosen to produce an interesting attribution case (as Phase 0 always intended), and stop implying a false derivation. **STATUS: LOCKED.**
+- **B (two-way interaction table)** — Recomputed directly from Phase 0's `coalition_values`: I(rev,opex)=+$2.2273M, I(rev,capex)=−$1.6297M, I(opex,capex)=$0.00M, three-way=$0.00M. Net non-additivity = 2.2273 − 1.6297 + 0 = **+$0.5976M** ✓ matches the reported +$0.60M. L1 = |2.2273|+|1.6297|+|0| = **$3.857M** ✓ matches the reported ~$3.86M. Both figures are confirmed correct, not merely repeated.
+- **C (FY25 citation error)** — **Verified against Zoom's SEC filings.** The Phase 0 `assumptions.md` cites "FY2025 GAAP operating income $1,123.6M, Zoom 8-K Feb 24 2025" — this is wrong on two counts. First, Zoom's own Feb 24, 2025 release (covering FY ended Jan 31, 2025) reports **FY2025 GAAP operating margin of 17.4%**, not ~24%. Second, $1,123.6M is confirmed (via Zoom's Feb 25, 2026 release, which states income from operations was "$1,123.6 million, compared to GAAP income from operations of $813.3 million for fiscal year 2025") to be the **FY2026** figure. **Correct FY2025 GAAP operating income = $813.3M; correct FY2025 GAAP operating margin ≈ 17.4%.** This is a material correction: Phase 0's `opex_pct=52.0%` was calibrated to imply "~24% GAAP op margin," which itself was never Zoom's real FY25 figure.
+  - **DECISION 1** — OPTIONS: (a) silently leave Phase 0 numbers as-is and only fix the citation text; (b) re-derive V1 to target the correct 17.4% margin and treat this as a new golden dataset, breaking comparability with Phase 0's LOCKED numbers.
+  - **RECOMMENDATION:** (a), with the correction fully disclosed. **WHY:** Phase 0 explicitly locks the Phase-0 numbers as fixed regression-test fixtures ("must appear unchanged in the Blueprint"); Phase 0 was always labeled **illustrative**, not a reproduction of Zoom's actuals, so its internal consistency (a 7-driver toy model reconciling to itself) does not depend on the citation being correct. **TRADE-OFF:** the phrase "implies ~24% GAAP op margin" in the old `assumptions.md` is retired as misleading. **IMPLEMENTATION CONSEQUENCE:** `data/illustrative/assumptions.md` is rewritten (§L) to state the corrected FY25 figures ($813.3M, 17.4%) as the *real* public anchor, explicitly flag that `opex_pct=52.0%` is an **illustrative, not margin-matched**, input chosen to produce an interesting attribution case (as Phase 0 always intended), and stop implying a false derivation. **STATUS: LOCKED.**
 - **D (30% swing framing)** — Applied: framed throughout as scenario-specific (§D, §N), never as a universal property.
 - **E (bilinear caveat)** — Applied: §D's interaction methodology explicitly generalizes beyond the bilinear case (the plain and full Grabisch–Roubens pairwise formulas are shown to coincide *only because* this model's three-way term is exactly zero — not a general property; see §D).
 
-**Classification register (extends masterplan §4.5):**
+**Classification register:**
 
 | Status | Item |
 |---|---|
@@ -98,7 +98,7 @@ primary_output: free_cash_flow
 A company/industry adapter (`mapping_<company>.yaml`) binds its own named drivers to these roles; `model.py`'s `compute_fcf` operates only on roles, never on company-specific names. This is what makes the Caterpillar mapping-only rule (§M) enforceable.
 
 **Variance methodology.**
-- Total variance: `V2_FCF − V1_FCF`, exact by construction (§4.2).
+- Total variance: `V2_FCF − V1_FCF`, exact by construction.
 - **Sequential bridge:** unchanged Phase-0 algorithm. Full `n!` enumeration for `n_changed ≤ 6` (720 orderings, sub-second); for `n_changed > 6`, the diagnostic display uses `k=1000` randomly sampled orderings (seeded) to build the min–max whisker, since exhaustive enumeration is no longer the reporting requirement — Shapley remains the number of record regardless.
 - **Shapley:** unchanged exact-enumeration algorithm for `n_changed ≤ 8` (§G for the MC switch above 8). Efficiency axiom (`Σφᵢ = f(N) − f(∅)`) is enforced at `1e-9` tolerance, matching Phase 0's test 4.
 
@@ -106,7 +106,7 @@ A company/industry adapter (`mapping_<company>.yaml`) binds its own named driver
 1. **Primary (reader-facing):** the plain pairwise term `I(i,j) = f({i,j}) − f({i}) − f({j}) + f(∅)`. Directly interpretable: "the extra dollars of FCF impact when driver *i* and driver *j* move together, beyond what each does alone." No game-theory background required.
 2. **Methodology appendix (rigor-facing):** the general Grabisch–Roubens Shapley interaction index for `n>2` players, which for a pair `{i,j}` in an `n`-player game averages the plain term over every subset `S ⊆ N∖{i,j}` with combinatorial weight `|S|!(n−|S|−2)!/(n−1)!`.
 
-**Independently verified this session:** for the Phase 0 3-driver case, both formulas coincide exactly (`I(rev,opex)=+2.2273`, `I(rev,capex)=−1.6297`, `I(opex,capex)=0.0000`) — but only because the model's true 3-way term is exactly zero. This is **not** a general property (§4.4.E caveat); at `n>3`, or wherever a genuine 3-way term exists, the two formulas diverge. **DECISION 2** — the engine (`interactions.py`) must implement the general weighted formula unconditionally, never the plain-pair shortcut, so correctness generalizes past this specific fixture. **STATUS: LOCKED.**
+**Verified:** for the Phase 0 3-driver case, both formulas coincide exactly (`I(rev,opex)=+2.2273`, `I(rev,capex)=−1.6297`, `I(opex,capex)=0.0000`) — but only because the model's true 3-way term is exactly zero. This is **not** a general property (Phase 0 caveat); at `n>3`, or wherever a genuine 3-way term exists, the two formulas diverge. **DECISION 2** — the engine (`interactions.py`) must implement the general weighted formula unconditionally, never the plain-pair shortcut, so correctness generalizes past this specific fixture. **STATUS: LOCKED.**
 
 - **Net non-additivity** = actual variance − Σ(isolated one-at-a-time impacts) = Σ over all interaction terms (2-way + 3-way…), signed, can partially cancel. Verified: `+2.2273 − 1.6297 + 0 = +0.5976 ≈ +$0.60M`.
 - **L1 non-additivity** = Σ|interaction terms|, never cancels. Verified: `|2.2273|+|1.6297|+|0| = 3.857 ≈ $3.86M`. This is the correct model-risk diagnostic (challenge 12): a model with L1 = 0 has *provably zero* ordering dependence in its sequential bridge, regardless of sign cancellation in the net figure.
@@ -204,7 +204,7 @@ WHY: 8 is generous headroom over Phase 0's 3-driver case and over the "controlle
 **MC sample-count default:** `m=10,000` seeded permutation samples (`seed` parameter, default `42`, always exposed per hard constraint 3), following Castro-Gómez-Tejada's O(1/√m) CLT convergence. The engine reports an **empirical 95% CI** via percentile bootstrap over the running per-permutation marginal-contribution samples (not an assumed one) — if the CI half-width exceeds 2% of `|V2−V1|`, the engine automatically doubles `m` (bounded retry ×3) and warns in the output rather than silently reporting an under-converged estimate.
 STATUS: LOCKED.
 
-**Handling of opposing-sign drivers:** percentages of variance are reported signed, uncapped (can exceed 100% or go negative), exactly as Phase 0 already does (`opex_pct` = 248%, `capex_pct` = −182%) — never forced to a positive scale (hard constraint respected; matches masterplan §4.2's own reported table).
+**Handling of opposing-sign drivers:** percentages of variance are reported signed, uncapped (can exceed 100% or go negative), exactly as Phase 0 already does (`opex_pct` = 248%, `capex_pct` = −182%) — never forced to a positive scale (hard constraint respected; matches Phase 0's reported table).
 
 ---
 
@@ -226,10 +226,10 @@ No arbitrary black-box "model-risk score" is produced anywhere in this design �
 
 ## I. Testing Architecture
 
-**Retained from Phase 0 (10 tests, re-verified this session):** V1/V2 reproducibility; sequential reconciliation (all orderings); Shapley reconciliation (Efficiency); zero-change case; single-driver case (×3); ordering-sensitivity-is-exposed guard; Shapley symmetry axiom.
+**Retained from Phase 0 (10 tests, re-verified):** V1/V2 reproducibility; sequential reconciliation (all orderings); Shapley reconciliation (Efficiency); zero-change case; single-driver case (×3); ordering-sensitivity-is-exposed guard; Shapley symmetry axiom.
 
 **New for Phase 1 (target ≥30 total):**
-- **Mathematical invariants (new):** Shapley Dummy (driver with zero marginal contribution on every coalition ⇒ φ=0); Shapley Additivity (`φ(f+g)=φ(f)+φ(g)` on a synthetic linear-combination fixture); interaction reconciliation (`net non-additivity == Σ pairwise I(i,j) + three-way term`, verified this session to hold at `0.5976 ≈ 0.60`); L1 non-additivity ≥ |net non-additivity| always (triangle inequality, provable).
+- **Mathematical invariants (new):** Shapley Dummy (driver with zero marginal contribution on every coalition ⇒ φ=0); Shapley Additivity (`φ(f+g)=φ(f)+φ(g)` on a synthetic linear-combination fixture); interaction reconciliation (`net non-additivity == Σ pairwise I(i,j) + three-way term`, verified to hold at `0.5976 ≈ 0.60`); L1 non-additivity ≥ |net non-additivity| always (triangle inequality, provable).
 - **Ingestion (`test_ingestion.py`):** round-trip fidelity (generate → load → values match to 1e-9); schema-version major-mismatch failure; formula-whitelist violation failure (each banned function individually); non-`Drivers!B4:B10` edit rejection.
 - **SIA (`test_sia.py`):** one passing + one deliberately-broken fixture per each of the 8 diagnostics (16 tests minimum).
 - **Shapley MC (`test_variance_bridge.py` extension):** seeded MC estimate converges toward the exact value as `m` grows (assert monotonically shrinking |MC−exact| across `m∈{100,1000,10000}`); reported CI narrows correspondingly; same seed ⇒ byte-identical MC result across two runs.
@@ -271,12 +271,12 @@ default weights `w1=0.5, w2=0.3, w3=0.2` (documented Assumption #2, adjustable, 
 
 | Phase | Content | Definition of Done | Depends on |
 |---|---|---|---|
-| **0 — Proof of concept** | ✅ Complete (re-verified this session) | 10/10 tests pass; README decision gate = MODIFY | — |
+| **0 — Proof of concept** | ✅ Complete (re-verified) | 10/10 tests pass; README decision gate = MODIFY | — |
 | **1 — Core Bridgework** | Canonical schema + role taxonomy; constrained-round-trip Excel ingestion (Decision 3); SIA (8 checks); hardened Shapley (exact + MC, Decision 4); interactions.py (Decision 2); Zoom golden dataset; ≥30 tests | All §I tests pass in CI; `bridgework compare` CLI runs end-to-end on the Zoom fixture; golden-dataset regression suite green | Phase 0 |
 | **2 — Analytical engine expansion** | DIA (tornado + Sobol via SALib); two-way sensitivity heatmap; TBA *if* monotonicity precheck research holds up on ≥3 synthetic nonlinear fixtures (challenge 3, conditional) | Sobol first/total-order reported with documented input-distribution policy; TBA either ships with the monotonicity guard proven safe, or is formally deferred again with evidence | Phase 1 |
 | **3 — Professional reporting** | HTML report; IBCS/ISO-24896-aligned visuals; decision-priority table (full 3-factor formula); methodology + reproducibility appendices | A non-technical reviewer can read the HTML report and understand the V1→V2 story without opening Python | Phase 1, partially Phase 2 |
 | **4 — Cross-company validation** | 6 synthetic edge cases (§M) as the *primary* generalization evidence; Caterpillar mapping as a stretch goal, not a gate (Decision, challenge 10) | Zero changes to `src/bridgework/*.py` required for the Caterpillar mapping OR for any synthetic edge case; if either requires an engine change, the canonical schema is revised and this phase reruns | Phase 1 |
-| **5 — Portfolio polish** | README, decision diary, methodology page, clean repo | Passes the §12 quality gate: a different competent engineer can implement from this Blueprint alone | Phases 1–4 |
+| **5 — Portfolio polish** | README, decision diary, methodology page, clean repo | Passes the quality gate: a different competent engineer can implement from this Blueprint alone | Phases 1–4 |
 | **6 — Optional LLM narrator** | Narration only, never calculation; gated on evidence of genuine incremental value | Not started; no evidence gathered yet — OPEN | Phase 5 |
 
 ---
@@ -337,7 +337,7 @@ Every file above has a one-line responsibility stated inline; nothing else is ad
 
 ## M. Cross-Company Validation
 
-**DECISION 5 (second company, challenge 10):** OPTIONS: full Volvo build; full Caterpillar build; synthetic edge cases only. RECOMMENDATION: synthetic edge cases as the *primary* Phase-1/4 generalization evidence (per masterplan's own instruction: "if small, replace with synthetic edge-case validation"); Caterpillar as an optional Phase-4 stretch, not a gate. WHY: a full second-company build is a large effort for a marginal signal beyond what a well-designed synthetic suite already proves about the schema's role-based abstraction (§D). If pursued, Caterpillar is preferred over Volvo because both Caterpillar and Zoom report in USD under US-GAAP — testing the schema's industrial-sector generalization without simultaneously introducing FX and IFRS-reconciliation noise that would contaminate the "zero code changes required" test with issues unrelated to the schema itself. STATUS: LOCKED (edge cases primary) / PROVISIONAL (Caterpillar if pursued).
+**DECISION 5 (second company, challenge 10):** OPTIONS: full Volvo build; full Caterpillar build; synthetic edge cases only. RECOMMENDATION: synthetic edge cases as the *primary* Phase-1/4 generalization evidence; Caterpillar as an optional Phase-4 stretch, not a gate. WHY: a full second-company build is a large effort for a marginal signal beyond what a well-designed synthetic suite already proves about the schema's role-based abstraction (§D). If pursued, Caterpillar is preferred over Volvo because both Caterpillar and Zoom report in USD under US-GAAP — testing the schema's industrial-sector generalization without simultaneously introducing FX and IFRS-reconciliation noise that would contaminate the "zero code changes required" test with issues unrelated to the schema itself. STATUS: LOCKED (edge cases primary) / PROVISIONAL (Caterpillar if pursued).
 
 **Mapping-only rule:** adding any second company must require zero changes to `src/bridgework/*.py` — only a new `mapping_<company>.yaml`. If it requires an engine change, the canonical schema (§D) has failed its generalization test and must be revised before Phase 4 is considered complete.
 
@@ -375,4 +375,4 @@ Every file above has a one-line responsibility stated inline; nothing else is ad
 
 ---
 
-*End of Bridgework — Master Research & Architecture Blueprint v1.0. Self-test per §12 applied: every algorithm has an exact function signature and file path (§E, §G); every non-trivial choice uses the §7 format (Decisions 1–5); every §8 mandatory challenge is directly answered (§A, §D, §F, §G, §M); the repository tree (§L) plus this document contain no unresolved "TBD." A competent engineer or AI receiving only this document and the Phase-0 repository should be able to implement Phase 1 without a clarifying question.*
+*End of Bridgework — Master Research & Architecture Blueprint v1.0.*

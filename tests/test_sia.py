@@ -97,9 +97,8 @@ def test_check7_unsupported_construct_fails(clean_workbook):
 
 def test_check8_orphaned_driver_detected(clean_workbook):
     """A driver declared but never referenced in Calc is dead input a
-    reader would wrongly assume is live. The Blueprint promised this check
-    and the code did not implement it until adversarial review found the
-    drift."""
+    reader would wrongly assume is live. The Blueprint's contract lists
+    this check."""
     wb = openpyxl.load_workbook(clean_workbook)
     # Point the Opex formula at a literal so opex_pct becomes unreferenced.
     wb["Calc"]["B7"] = "=B5*0.5"
@@ -116,8 +115,8 @@ def test_check8_passes_on_clean_workbook(clean_workbook):
 
 
 def test_sia_is_a_regression_gate_not_a_tamper_boundary(clean_workbook):
-    """Documents the security boundary precisely, because the Blueprint
-    previously implied SIA catches hand-edits and it does not.
+    """Documents the security boundary precisely: SIA does not catch
+    semantic hand-edits; ingestion's round-trip diff does.
 
     A semantically tampered formula using only whitelisted constructs and
     resolvable references passes SIA, and is caught by ingestion's

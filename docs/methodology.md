@@ -67,13 +67,11 @@ Two numbers, both reported, serving different purposes:
   broken driver. It is scenario-conditional ordering exposure, and calling
   it "model risk" overstates it.
 
-  **Implementation history worth recording.** An earlier version summed
-  absolute *pairwise Grabisch–Roubens indices* and added the three-way term
-  only at exactly n=3. That discarded all higher-order terms at n ≥ 4 and
-  made the stated invariant false: a four-player game exists whose six
-  pairwise indices are all ≈0 (old L1 ≈ 0.002) while every player's
-  sequential marginal still swings by 0.278 — wrong by 140×. The Möbius
-  formulation has no such hole. Locked by
+  **Why Möbius, not pairwise indices.** Summing absolute *pairwise
+  Grabisch–Roubens indices* (plus a three-way term) discards higher-order
+  terms at n ≥ 4: a four-player game exists whose six pairwise indices are
+  all ≈0 (pairwise L1 ≈ 0.002) while every player's sequential marginal
+  swings by 0.278. The Möbius formulation has no such hole. Locked by
   `test_l1_captures_higher_order_interaction`.
 
 Pairwise terms use the general Grabisch & Roubens (1999) weighted Shapley
@@ -249,7 +247,7 @@ denominator*. Measured on the shipped fixture:
 
 | | Zoom FCF | DCF valuation |
 |---|---:|---:|
-| L1 non-additivity | 9.9% of change | **22.7% of change** |
+| L1 non-additivity | 9.9% of change | **24.9% of change** |
 | Dominant interacting pair | revenue × opex | **WACC × terminal growth** |
 | Widest sequential ordering range | $3.86M on a $38.96M move | **$8.12/share on a $45.11 move** |
 

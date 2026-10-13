@@ -21,11 +21,10 @@ First-class artefact (Blueprint §N). Read this before trusting any output.
   non-GAAP FCF.** Stock-based compensation, interest income on Zoom's cash
   balance, gains on strategic investments, and deferred-revenue mechanics
   are all excluded by design.
-- **The original Phase-0 FY25 citation was wrong** (cited FY26's
-  $1,123.6M/~24% margin instead of FY25's actual $813.3M/17.4%) —
-  corrected in `data/illustrative/assumptions.md` (Decision 1). The
-  Phase-0 numerical results are unaffected, since they were never claimed
-  to reproduce Zoom's actuals.
+- **Zoom's public anchor is FY2025 GAAP operating income of $813.3M
+  (17.4% margin)**; the $1,123.6M figure is FY2026 (see
+  `data/illustrative/assumptions.md`, Decision 1). The model's results were
+  never claimed to reproduce Zoom's actuals.
 - **Excel ingestion is round-trip-only.** No support for ingesting a
   workbook Bridgework did not itself generate.
 - **DIA and TBA are present (Phase 2) but carry their own assumptions.**
@@ -96,8 +95,21 @@ First-class artefact (Blueprint §N). Read this before trusting any output.
   advice is to narrow it. The shipped model is provably single-driver
   monotone so this cannot occur on it; the guard is insurance for future
   models and the insurance is imperfect.
-- **Interaction terms stop at three-way.** For four or more changed
-  drivers the reported L1 figure understates true non-additivity.
+- **Shapley is the wrong tool for causally ordered drivers.** It averages
+  over all orderings as equally admissible; if a price increase *causes* a
+  volume decline, orderings that move volume first are counterfactually
+  incoherent, and a structural decomposition is more appropriate. For a
+  continuous path rather than two snapshots, Aumann–Shapley applies.
+- **L1 is scenario-conditional ordering exposure, not model risk.** A sound
+  Gordon-growth DCF scores 24.9% because the scenario moved two drivers that
+  share a denominator; a broken model scores zero if the scenario never moved
+  the broken driver (`docs/methodology.md`).
+- **The Monte-Carlo Shapley path does not fire on the shipped models.** Both
+  cap at 7 changed drivers against an 8-driver threshold; the path is tested
+  but unused.
+- **Change detection is exact.** `diff_changed` compares with `!=`, so
+  float dust (`0.031` vs `0.031000000000000001`) registers as a change with
+  dust-level attribution. NaN/inf driver values are not rejected at ingestion.
 - **`bridgework derive` does arithmetic, not extraction.** It converts line
   items an analyst supplies into driver ratios. It does not read filings,
   and will not detect a wrong line-item definition — only implausible

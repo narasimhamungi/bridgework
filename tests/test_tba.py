@@ -118,11 +118,10 @@ def test_fcf_is_provably_single_driver_monotone():
 
 
 def test_discontinuity_is_refused_not_reported_as_a_root():
-    """Adversarial review finding: brentq brackets a SIGN CHANGE, which a
-    discontinuity produces just as a root does. On a step function the old
-    implementation returned defined=True with a confident threshold at the
-    jump, where the function never actually equals the target. The residual
-    post-check closes the only path where TBA lied."""
+    """brentq brackets a SIGN CHANGE, which a discontinuity produces just as
+    a root does. Without a residual check, a step function returns
+    defined=True with a confident threshold at the jump, where the function
+    never equals the target. The residual post-check refuses instead."""
 
     def step(d: Drivers) -> float:
         return -1.0 if d.opex_pct < 0.75 else 1.0

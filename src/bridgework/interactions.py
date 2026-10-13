@@ -132,13 +132,11 @@ def l1_non_additivity(v1, v2, changed: Sequence[str], model_fn=compute_fcf) -> f
     L1 == 0 if and only if the model is additive over the changed drivers
     (in which case every ordering yields identical results).
 
-    Implementation note. An earlier version summed the absolute pairwise
-    Grabisch-Roubens indices and added the three-way term only when exactly
-    three drivers changed. That silently discarded all higher-order terms
-    at n >= 4, and the resulting invariant was false: a four-driver game
-    exists whose six pairwise indices are all ~0 (so the old L1 read ~0)
-    while every player's sequential marginal still swings by 0.278. The
-    Möbius formulation has no such hole. See
+    Why Möbius: summing the absolute pairwise Grabisch-Roubens indices (plus
+    a three-way term) discards all higher-order terms at n >= 4 -- a
+    four-driver game exists whose six pairwise indices are all ~0 while
+    every player's sequential marginal still swings by 0.278. The Möbius
+    formulation has no such hole. See
     tests/test_shapley_axioms.py::test_l1_captures_higher_order_interaction.
     """
     terms = mobius_terms(v1, v2, changed, model_fn=model_fn)

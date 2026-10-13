@@ -193,8 +193,7 @@ def run_structural_checks(workbook_path: str | Path, spec=None) -> SIAReport:
     )
 
     # --- Check 8: orphaned driver check --------------------------------
-    # The Blueprint listed this and the code did not implement it -- a
-    # contract/enforcement drift found in adversarial review. Every declared
+    # Listed in the Blueprint's contract. Every declared
     # driver must be referenced by at least one Calc formula, or it is dead
     # input that a reader would wrongly assume is live.
     orphans = [name for name in driver_names if name not in referenced]

@@ -48,5 +48,5 @@ Four corrections were mandated for all downstream documentation
    Decision 1.
 4. The "~30% swing" framing reworded as scenario-specific, not universal.
 
-Full detail: `Financecore_prompt_and_responses.pdf` (Phase 0 prompt and
-response) and the Master Research & Architecture Blueprint v1.0 §B.
+Full detail: the Master Research & Architecture Blueprint v1.0 §B
+(`docs/BLUEPRINT.md`).

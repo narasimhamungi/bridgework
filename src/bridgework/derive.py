@@ -12,9 +12,9 @@ reports, PDFs or XBRL. Extraction from filings is a different and much
 larger problem (it is the entire product of several funded companies), and
 solving it badly would mean either an LLM making judgement calls inside the
 calculation path — destroying the determinism and auditability this project
-rests on — or brittle heuristics that fail silently. Both red-team reviews
-identified confident output on unvalidated input as the project's core
-weakness; automated extraction would industrialise exactly that.
+rests on — or brittle heuristics that fail silently. Confident output on
+unvalidated input is the failure this project most needs to avoid;
+automated extraction would industrialise exactly that.
 
 So the division of labour is explicit: **the analyst decides what the
 numbers mean; this module does the arithmetic.** Deciding which lines are

@@ -1,16 +1,12 @@
-# Bridgework 
+# Bridgework
 
-> **Phase 0** (proof of concept) asked one question: *does a Shapley-based
-> variance bridge produce enough analytical value to justify building
-> around it?* Verdict: **MODIFY** — yes, with two changes. **Phase 1**
-> implements those changes as a hardened, tested engine. **Phase 2** adds
-> the two remaining analytical modules — DIA (sensitivity) and TBA
-> (thresholds). **Phase 3** adds a self-contained HTML report a
-> non-technical reader can act on. **Phase 4** proves the schema
-> generalises across three companies with zero engine changes. **Phase 6**
-> extends attribution from cash flow to *valuation* — the DCF case, where
-> the problem bites hardest. Built per the *Bridgework — Master Research
-> & Architecture Blueprint v1.0*.
+[![CI](https://github.com/narasimhamungi/bridgework/actions/workflows/ci.yml/badge.svg)](https://github.com/narasimhamungi/bridgework/actions/workflows/ci.yml)
+
+> Order-independent variance attribution (exact Shapley) with the interaction
+> structure reported, not hidden; global sensitivity (Sobol/Morris) and
+> threshold analysis; a self-contained HTML workpaper; one engine across
+> three companies and two model types (free cash flow and DCF valuation).
+> Specified in [`docs/BLUEPRINT.md`](docs/BLUEPRINT.md).
 
 ## What this is
 
@@ -68,10 +64,10 @@ shows you the arithmetic.
 pip install -r requirements.txt
 pip install -e .
 
-# Phase 1: variance bridge only
+# Variance bridge only
 bridgework compare data/illustrative/zoom_v1_drivers.yaml data/illustrative/zoom_v2_drivers.yaml
 
-# Phases 1+2: adds sensitivity (DIA) and threshold (TBA) analysis
+# Adds sensitivity (DIA) and threshold (TBA) analysis
 bridgework compare data/illustrative/zoom_v1_drivers.yaml data/illustrative/zoom_v2_drivers.yaml --full
 
 # A different company entirely — same engine, no code changes
@@ -98,7 +94,7 @@ bridgework compare data/illustrative/zoom_v1_drivers.yaml models/zoom/v2.xlsx
 — any change outside the 7 driver cells is rejected with an itemized error
 (the Excel contract, see `schema/excel_contract.md`).
 
-## Results (locked, independently re-verified)
+## Results (Zoom fixture, locked by golden tests)
 
 | | Value ($M) |
 |---|---:|
@@ -135,15 +131,15 @@ bridgework/
 │   ├── sia.py                   7 structural checks + 1 reserved (regression gate)
 │   ├── variance_bridge.py       Sequential (diagnostic) + Shapley exact/Monte-Carlo (primary)
 │   ├── interactions.py          Pairwise interactions, net/L1 non-additivity
-│   ├── derive.py                Phase 7 — line items → drivers (arithmetic, not extraction)
-│   ├── dcf.py                   Phase 6 — DCF valuation model (implied share price)
-│   ├── model_spec.py            Phase 6 — model registry (fcf | dcf)
-│   ├── dia.py                   Phase 2 — tornado, Sobol, Morris sensitivity
-│   ├── tba.py                   Phase 2 — threshold analysis + monotonicity guard
+│   ├── derive.py                Line items → drivers (arithmetic, not extraction)
+│   ├── dcf.py                   DCF valuation model (implied share price)
+│   ├── model_spec.py            Model registry (fcf | dcf)
+│   ├── dia.py                   Tornado, Sobol, Morris sensitivity
+│   ├── tba.py                   Threshold analysis + monotonicity guard
 │   ├── audit.py                 Run manifest — input hash, code version, timestamp
 │   ├── report.py                Deterministic executive summary + full markdown report
 │   ├── plots.py                 IBCS/ISO-24896-aligned charts
-│   ├── html_report.py           Phase 3 — self-contained HTML workpaper
+│   ├── html_report.py           Self-contained HTML workpaper
 │   └── cli.py                   `bridgework compare` entry point
 ├── tests/                      179 tests: axioms, ingestion, SIA, DIA, TBA, DCF, HTML, cross-company, golden regression, edge cases
 └── docs/                       methodology, decision diary, limitations, Phase 0 findings
@@ -156,7 +152,6 @@ bridgework/
 | [`docs/methodology.md`](docs/methodology.md) | The maths: Shapley, interaction indices, Sobol, threshold guards |
 | [`docs/decision_diary.md`](docs/decision_diary.md) | Every non-trivial choice, with options considered and trade-offs |
 | [`docs/limitations.md`](docs/limitations.md) | What this does *not* do — read before trusting output |
-| [`docs/ADVERSARIAL_REVIEW.md`](docs/ADVERSARIAL_REVIEW.md) | Twelve challenges to this work, answered with evidence — including two bugs it found |
 | [`docs/PAPER.md`](docs/PAPER.md) | Technical report: method, results, validation |
 | [`docs/phase_0_findings.md`](docs/phase_0_findings.md) | The proof-of-concept that justified building it |
 
@@ -179,8 +174,8 @@ Three companies, three deliberately different economic shapes, one engine.
 Note precisely what this shows: **vocabulary and parameter generalisation
 within a fixed model form**, not that the seven-driver equation suits any
 business. It does not — see the bank case in
-[`docs/ADVERSARIAL_REVIEW.md`](docs/ADVERSARIAL_REVIEW.md), which the tool
-accepts without complaint and should not.
+[`docs/limitations.md`](docs/limitations.md), which the tool accepts without
+complaint and should not.
 
 | | Gross margin | CapEx intensity | Working capital |
 |---|---:|---:|---:|
@@ -239,7 +234,7 @@ Getting from here to production use would mean solving model ingestion and
 schema fit, which are larger problems than the one this project set out to
 address. Read it as a demonstration of method, not as a deployable tool.
 
-## What's honestly not here yet
+## What is not here
 
 The DCF model attributes valuation *movement*; it does not demonstrate IB
 modelling craft — no debt schedules, no purchase price allocation, no

@@ -14,7 +14,7 @@ We quantify the effect on four models and find it is not uniformly small. On a c
 
 We implement the Shapley value as the attribution rule. It is the unique allocation satisfying efficiency, symmetry, the dummy property and additivity, and it is by construction independent of ordering. Alongside it we report the interaction structure itself, using the Grabisch–Roubens interaction index, and argue that the correct risk statistic is the sum of absolute interaction terms (which cannot cancel) rather than the net figure (which can, and does, understate the problem by an order of magnitude in one of our cases).
 
-The accompanying implementation, `bridgework`, is an open-source Python package: 4,909 lines, 159 tests, deterministic, with no language model in the calculation or narrative path. It runs unchanged across three companies with deliberately opposing economics and across two model types. We report a class of failure specific to coalition-based attribution — mixtures of two individually valid model versions can be jointly invalid — and describe the guard it requires.
+The accompanying implementation, `bridgework`, is an open-source Python package: 179 tests, deterministic, with no language model in the calculation or narrative path. It runs unchanged across three companies with deliberately opposing economics and across two model types. We report a class of failure specific to coalition-based attribution — mixtures of two individually valid model versions can be jointly invalid — and describe the guard it requires.
 
 ---
 
@@ -216,7 +216,7 @@ This establishes that the schema generalises. It does **not** establish that the
 
 ### 6.1 Test suite
 
-159 tests. Beyond conventional unit and integration coverage:
+179 tests. Beyond conventional unit and integration coverage:
 
 - **Axioms.** Efficiency, symmetry, dummy and additivity are each verified directly, not assumed from the implementation.
 - **Golden datasets.** Committed byte-exact expected outputs; any change is a hard failure. These held through two substantial refactors and are the principal reason we can claim reproducibility rather than merely intend it.
@@ -339,7 +339,7 @@ Sobol, I.M. (2001) 'Global sensitivity indices for nonlinear mathematical models
 
 ```bash
 pip install -r requirements.txt && pip install -e .
-pytest tests/ -v                                    # 159 tests
+pytest tests/ -v                                    # 179 tests
 
 bridgework compare data/illustrative/zoom_v1_drivers.yaml \
                    data/illustrative/zoom_v2_drivers.yaml --full

@@ -114,10 +114,9 @@ def test_edge_case_6_interaction_equal_in_magnitude_to_main_effect():
 
 def test_negative_output_levels_keep_their_sign(tmp_path):
     """Regression: a LEVEL (free cash flow, equity value) can be negative
-    and must display its sign. An earlier implementation used abs() for
-    both changes and levels, so Northwind's V2 of -$152.88M was reported
-    as '$152.88M' -- a sign error on a headline figure, in shipped output.
-    Found by adversarial testing, not by the suite."""
+    and must display its sign. Using abs() for both changes and levels
+    would report Northwind's V2 of -$152.88M as '$152.88M' -- a sign error
+    on a headline figure."""
     from bridgework import cli
     from bridgework.report import executive_summary
 

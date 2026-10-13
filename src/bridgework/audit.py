@@ -48,7 +48,7 @@ def _dependency_fingerprint() -> str:
     """Hash of the installed versions of the packages the calculation
     depends on. The reproducibility claim is only meaningful against a
     known dependency set; recording python and platform but not package
-    versions left the claim resting on luck (adversarial review finding)."""
+    versions would leave the claim resting on luck."""
     import importlib.metadata as md
 
     parts = []

@@ -252,7 +252,7 @@ Honesty matters more than pitch here.
 - **It will not fit most real models as-is.** The seven-role schema suits
   a compact operating model. A bank, a segmented conglomerate, a levered
   industrial — none map cleanly, and the tool will not warn you (see
-  `docs/ADVERSARIAL_REVIEW.md`).
+  `docs/limitations.md`).
 - **It does not tell you whether your assumptions are right.** It tells you
   what they imply and how confidently that can be attributed.
 

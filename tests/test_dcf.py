@@ -292,9 +292,9 @@ def test_interaction_csv_reconciles_to_reported_l1(tmp_path):
 
 
 def test_invalid_coalition_is_caught_preflight_not_midpipeline(tmp_path):
-    """Adversarial review finding: the coalition guard fired mid-run, after
-    workbooks had already been written, as a raw exception. The precondition
-    is checkable up front and should produce a clean, actionable message."""
+    """The coalition precondition is checkable up front: it must halt with a
+    clean, actionable message before any workbook is written, not raise
+    mid-run."""
     import yaml
 
     from bridgework.cli import PipelineHaltedError

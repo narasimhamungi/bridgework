@@ -6,12 +6,9 @@ because the reported figure includes stock-based compensation add-backs,
 interest income on Zoom's cash balance, gains on strategic investments and
 other non-recurring items this compact model deliberately excludes.
 
-## Correction applied (Blueprint Decision 1)
+## Public anchor (Blueprint Decision 1)
 
-Earlier project documentation cited "FY2025 GAAP operating income $1,123.6M,
-Zoom 8-K Feb 24 2025" as the anchor implying `opex_pct`'s "~24% GAAP
-op margin." **This citation was wrong.** Independently verified against
-Zoom's own filings:
+FY2025 GAAP operating income, verified against Zoom's own filings:
 
 - Zoom's Feb 24, 2025 release (fiscal year ended Jan 31, 2025) reports
   **GAAP operating margin of 17.4%** for FY2025.
@@ -22,12 +19,11 @@ Zoom's own filings:
 **Corrected public anchor: FY2025 GAAP operating income = $813.3M;
 FY2025 GAAP operating margin ≈ 17.4%.**
 
-This model's `opex_pct = 52.0%` is **not** derived to match this corrected
-margin. It never needs to be: this is a controlled, illustrative attribution
-experiment, not a reproduction of Zoom's actual FY25 income statement. The
-value was chosen (as it always was) to produce an interesting, opposing-sign
-three-driver attribution case. The correction here is to the *citation*,
-which previously implied a false derivation — it is retired.
+This model's `opex_pct = 52.0%` is **not** derived to match this margin. It
+never needs to be: this is a controlled, illustrative attribution experiment,
+not a reproduction of Zoom's actual FY25 income statement. The value is chosen
+to produce an interesting, opposing-sign three-driver attribution case; no
+public figure is claimed to imply it.
 
 ## Public data anchors (context only, not derivation inputs)
 

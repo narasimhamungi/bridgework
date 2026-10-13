@@ -121,7 +121,7 @@ def run_pipeline(
     # Pre-flight: Shapley evaluates coalitions, i.e. MIXTURES of V1 and V2.
     # A mixture can be invalid when both endpoints are fine. Check that here
     # so the user gets a clear message before any workbook is written,
-    # rather than a mid-pipeline exception (adversarial review finding).
+    # rather than a mid-pipeline exception.
     if {"wacc", "terminal_growth"} <= set(spec.roles):
         min_wacc = min(v1.wacc, v2.wacc)
         max_g = max(v1.terminal_growth, v2.terminal_growth)
@@ -237,8 +237,7 @@ def _write_outputs(result: PipelineResult, outputs: Path) -> None:
     # Export the Möbius interaction terms, which are what L1 aggregates.
     # The pairwise Grabisch-Roubens indices are a different (interpretable,
     # reader-facing) quantity and are exported separately; summing THOSE
-    # would not reconcile to the reported L1, which is exactly the tie-out
-    # failure adversarial review caught.
+    # would not reconcile to the reported L1.
     _mob = result.interactions.get("mobius", {})
     pd.DataFrame(
         [{"subset": " x ".join(T), "order": len(T), "mobius_interaction": val}
